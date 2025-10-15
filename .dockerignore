@@ -1,0 +1,7 @@
+site/node_modules
+site/build
+.git
+.gitignore
+*.log
+.DS_Store
+Thumbs.db

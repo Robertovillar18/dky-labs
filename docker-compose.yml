@@ -1,0 +1,27 @@
+services:
+  # DEV: hot reload en http://localhost:3000
+  web:
+    image: node:20-alpine
+    working_dir: /work/site
+    volumes:
+      - .:/work
+      - node_modules_web:/work/site/node_modules
+    ports:
+      - "3000:3000"
+    command: sh -c "npm install && npm run start -- --host 0.0.0.0"
+    container_name: dky-web
+    profiles: ["dev"]
+
+  # PROD: Nginx con build ya embebido (http://localhost:8080)
+  site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dky-labs-site:latest
+    ports:
+      - "8080:80"
+    container_name: dky-site
+    profiles: ["prod"]
+
+volumes:
+  node_modules_web:
