@@ -1,13 +1,15 @@
 name: Build & Push backend to ACR
 on:
+  workflow_dispatch: {}         # permite Run workflow manual
   push:
+    branches: [ main, master ]  # por si tu rama por defecto no es main
     paths:
-      - 'apps/backend/*'
-    branches: [ "main" ]
+      - 'apps/backend/**'       # incluye subcarpetas y archivos nuevos
+      - '.github/workflows/build-backend.yml'  # si solo cambias el workflow
   pull_request:
+    branches: [ main, master ]
     paths:
-      - 'apps/backend/*'
-    branches: [ "main" ]
+      - 'apps/backend/**'
 
 jobs:
   build:
