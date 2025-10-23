@@ -1,10 +1,13 @@
 name: Build & Push backend to ACR
-
 on:
   push:
     paths:
       - 'apps/backend/**'
-    branches: [ main ]
+    branches: [ "main" ]
+  pull_request:
+    paths:
+      - 'apps/backend/**'
+    branches: [ "main" ]
 
 jobs:
   build:
