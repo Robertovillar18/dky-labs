@@ -1,0 +1,86 @@
+
+
+cd /d D:\git_hub
+mkdir dky-labs
+cd dky-labs
+docker run --rm -it -v "%cd%":/work -w /work node:20-alpine npx create-docusaurus@latest site classic
+
+
+Create de docker compuse file:
+______________________________________________________________________________
+services:
+  web:
+    image: node:20-alpine
+    working_dir: /work/site
+    volumes:
+      - .:/work
+      - node_modules:/work/site/node_modules
+    ports:
+      - "3000:3000"
+    command: sh -c "npm install && npm run start -- --host 0.0.0.0"
+volumes:
+  node_modules:
+______________________________________________________________________________
+
+docker compose exec web sh -lc "npm ci && npm run build"
+
+lenta en dev:
+docker compose --profile dev up
+
+levanta en prod:
+docker compose --profile prod up -d --build site
+
+
+Se debe instalar el cliente de AzureCLI
+Por CMD:
+winget install --id Microsoft.AzureCLI
+Verificar instalación:
+az --version
+
+Para iniciar sesion
+az login
+Para listar las suscripciones:
+az account list -o table
+Seleccionar una suscripcion por nombre:
+az account set --subscription "Azure subscription 1"
+
+
+Comandos para Windows CMD que crean la Static Web App en Azure y conectan tu repo de GitHub
+
+En CMD:
+set RG=dky-labs-rg 
+set SWA_NAME=dky-labs-swa
+set GITHUB_USER=Robertovillar18
+set REPO=dky-labs
+set BRANCH=main
+set LOCATION="West Europe"
+
+Crear resource group (si ya existe, te dirá que ya existe)
+az group create --name %RG% --location %LOCATION%
+
+Registrar el proveedor Microsoft.Web
+az provider register --namespace Microsoft.Web
+
+Chequear registro:
+az provider show --namespace Microsoft.Web --query "registrationState" -o tsv
+
+Crear la Static Web App y autorizar GitHub (esto abrirá el navegador para autorizar)
+az staticwebapp create --name dky-labs-swa --resource-group dky-labs-rg --source https://github.com/Robertovillar18/dky-labs --branch main --login-with-github --location "West Europe" --app-location site --output-location build
+
+Chequear el host name:
+az staticwebapp show --name dky-labs-swa --resource-group dky-labs-rg --query defaultHostname -o tsv
+
+Con el nombre del host vamos a configurar el dominio:
+
+Agregar el registro en tu proveedor DNS
+Entrá al panel donde administrás el dominio, y creá un registro CNAME así:
+Tipo	Nombre / Host	Valor / Destino	TTL
+CNAME		www			polite-sea-04a34e103.2.azurestaticapps.net
+A			@			20.49.104.34
+
+Agrega los dominios:
+az staticwebapp hostname set --name dky-labs-swa --resource-group dky-labs-rg --hostname www.dkylabs.com.uy
+az staticwebapp hostname set --name dky-labs-swa --resource-group dky-labs-rg --hostname dkylabs.com.uy
+
+Comprueba que quedo al listar los dominios:
+az staticwebapp hostname list --name dky-labs-swa --resource-group dky-labs-rg
