@@ -8,37 +8,26 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: true
-          lfs: false
+      - uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      # Build local (en el runner), sin Oryx
-      - name: Install & Build
+      - name: Install and Build
         working-directory: site
         run: |
           npm ci
           npm run build
 
-      # Deploy artefactos ya construidos → saltamos Oryx
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLACK_PEBBLE_05FD4B603 }}
-          action: upload
-          # IMPORTANTES para evitar Oryx:
-          skip_app_build: true
-          app_location: site                 # raíz de la app
-          app_artifact_location: site/build  # carpeta con el build
-          skip_api_build: true
-          api_location: ""                   # sin API
-          data_api_location: ""              # evita chequear 'swa-db-connections'
-          production_branch: main
+          action: "upload"
+          app_location: "site"              # Código fuente
+          app_artifact_location: "site/build"  # Artefactos generados
+          skip_app_build: true             # No usar Oryx
+          skip_api_build: true             # No API
