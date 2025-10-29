@@ -12,7 +12,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'DKY Labs',
   tagline: 'Metadatos, BI y asistentes IA listos en semanas',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo_small.png',
 
   url: 'http://localhost:3000',   // en dev
   baseUrl: '/',                   // MUY IMPORTANTE QUE SEA '/'
