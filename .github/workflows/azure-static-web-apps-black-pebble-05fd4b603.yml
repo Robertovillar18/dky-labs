@@ -2,58 +2,43 @@ name: Azure Static Web Apps CI/CD
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+  build_and_deploy:
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           submodules: true
           lfs: false
 
-      # ✅ Instalar Node para el build
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # o 18 si tu proyecto lo requiere
+          node-version: '20'
 
-      # ✅ Instalar y construir la app
-      - name: Build App
+      # Build local (en el runner), sin Oryx
+      - name: Install & Build
         working-directory: site
         run: |
           npm ci
           npm run build
 
-      # ✅ Subir la app construida a Azure
-      - name: Build And Deploy
-        id: builddeploy
+      # Deploy artefactos ya construidos → saltamos Oryx
+      - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLACK_PEBBLE_05FD4B603 }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          action: "upload"
-          app_location: "site"
-          output_location: "build"
+          action: upload
+          # IMPORTANTES para evitar Oryx:
+          skip_app_build: true
+          app_location: site                 # raíz de la app
+          app_artifact_location: site/build  # carpeta con el build
           skip_api_build: true
-          production_branch: "main"
-
-  close_pull_request_job:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    name: Close Pull Request Job
-    steps:
-      - name: Close Pull Request
-        id: closepullrequest
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLACK_PEBBLE_05FD4B603 }}
-          action: "close"
+          api_location: ""                   # sin API
+          data_api_location: ""              # evita chequear 'swa-db-connections'
+          production_branch: main
