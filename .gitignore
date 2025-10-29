@@ -1,0 +1,7 @@
+viejos/
+*.jsonplatform-outputs.json
+platform-outputs.json
+.secrets/
+platform-outputs.json
+platform-outputs.*.json
+.secrets/
