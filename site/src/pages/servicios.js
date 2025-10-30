@@ -20,7 +20,7 @@ export default function Servicios() {
                   <li>Informe ejecutivo</li>
                 </ul>
                 <p><strong>Duración:</strong> 2 semanas</p>
-                <p><strong>Precio:</strong> €1.900</p>
+                {/* <p><strong>Precio:</strong> €1.900</p> */}
               </div>
             </div>
           </div>
@@ -36,7 +36,7 @@ export default function Servicios() {
                   <li>Guía de operación</li>
                 </ul>
                 <p><strong>Duración:</strong> 2 semanas</p>
-                <p><strong>Precio:</strong> €2.400</p>
+                {/* <p><strong>Precio:</strong> €2.400</p> */}
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default function Servicios() {
                   <li>Recomendaciones de mejora</li>
                 </ul>
                 <p><strong>Duración:</strong> 1 semana</p>
-                <p><strong>Precio:</strong> €1.200</p>
+                {/* <p><strong>Precio:</strong> €1.200</p> */}
               </div>
             </div>
           </div>

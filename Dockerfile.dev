@@ -1,0 +1,14 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copiar package.json y lock file para instalar dependencias
+COPY site/package*.json ./
+RUN npm ci --no-audit --no-fund
+
+# Copiar código fuente de Docusaurus
+COPY site/ ./
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start", "--", "--host", "0.0.0.0", "--port", "3000"]

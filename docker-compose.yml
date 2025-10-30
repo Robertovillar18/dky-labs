@@ -1,0 +1,13 @@
+services:
+  docusaurus:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    environment:
+      # En Windows/Mac ayuda a detectar cambios en bind mounts
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - ./site:/app          # Monta tu código
+      - /app/node_modules    # Mantiene node_modules dentro del contenedor

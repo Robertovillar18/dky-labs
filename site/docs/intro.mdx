@@ -1,0 +1,70 @@
+---
+id: intro
+title: DKY Labs
+---
+
+import Link from '@docusaurus/Link';
+
+<div className="container">
+  <h2 style={{marginBottom: 0}}>La gestión de datos no es un proyecto.</h2>
+  <h3 style={{marginTop: '0.25rem'}}>Es tu ventaja competitiva.</h3>
+
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '16px',
+    marginTop: '2rem'
+  }}>
+    <div
+      style={{
+        backgroundImage: "url('/img/hero-bg.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        color: '#fff',
+        borderRadius: '12px',
+        padding: '2rem',
+        minHeight: '320px',
+        display: 'flex',
+        alignItems: 'center',
+        boxShadow: '0 6px 24px rgba(0,0,0,.10)',
+      }}
+    >
+      <div>
+        <h2 style={{marginTop: 0, marginBottom: '0.5rem'}}>Gestión de Datos</h2>
+        <p style={{margin: 0, opacity: 0.95}}>
+          Implementamos <strong>metadatos</strong>, <strong>calidad</strong> y <strong>gobierno</strong> con
+          herramientas open source como <strong>OpenMetadata</strong>. Empezamos con <em>datos maestros</em> y
+          <em> transaccionales</em>, y escalamos con orden.
+        </p>
+      </div>
+    </div>
+
+    <div
+      style={{
+        backgroundImage: "url('/img/hero-bg.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        color: '#fff',
+        borderRadius: '12px',
+        padding: '2rem',
+        minHeight: '320px',
+        display: 'flex',
+        alignItems: 'center',
+        boxShadow: '0 6px 24px rgba(0,0,0,.10)',
+      }}
+    >
+      <div>
+        <h2 style={{marginTop: 0, marginBottom: '0.5rem'}}>Proyectos de IA</h2>
+        <p style={{margin: 0, opacity: 0.95}}>
+          Soluciones con <strong>IA generativa</strong>, <strong>RAG</strong> y <strong>ML</strong> sobre datos
+          gobernados. Priorizamos <em>trazabilidad</em>, <em>seguridad</em> y <em>valor de negocio</em>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div style={{marginTop: 20, textAlign:'center'}}>
+    <Link className="button button--primary button--lg" to="/contacto">Agendar una reunión</Link>{' '}
+    <Link className="button button--secondary button--lg" to="/servicios">Ver servicios</Link>
+  </div>
+</div>
