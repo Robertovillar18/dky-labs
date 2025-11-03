@@ -1,0 +1,75 @@
+---
+id: modelos-generativos
+title: Modelos generativos
+---
+
+import Link from '@docusaurus/Link';
+
+## ¿Qué hacemos con Generative AI?
+
+En **DKY Labs** desarrollamos soluciones empresariales basadas en **Modelos de Lenguaje (LLMs)** y **arquitecturas de búsqueda semántica**, para crear asistentes e interfaces inteligentes que **entienden el lenguaje natural** y **responden con precisión y trazabilidad**.
+
+---
+
+### Nuestra arquitectura base: LLM + RAG
+
+Trabajamos con modelos **basados en Transformers**, utilizando técnicas modernas como:
+
+- **Prompting**: diseñamos las instrucciones que guían al modelo a producir respuestas útiles y consistentes.  
+- **Function Calling**: permitimos que el modelo invoque funciones externas (por ejemplo, consultar bases de datos o APIs).  
+- **RAG (Retrieval-Augmented Generation)**: combinamos información **buscada** con **generación de texto**, logrando respuestas que citan sus fuentes.
+
+---
+
+### ¿Qué es la búsqueda semántica?
+
+La **búsqueda semántica** permite que un sistema **entienda el significado** de lo que el usuario busca, en lugar de limitarse a palabras exactas.
+
+- En lugar de buscar coincidencias literales (“salud pública”), el sistema busca documentos **relacionados en sentido**, como “servicios médicos” o “atención sanitaria”.  
+- Esto se logra convirtiendo textos y consultas en **vectores numéricos** (*embeddings*) y midiendo su similitud.
+
+👉 El resultado es una búsqueda **más natural, contextual y precisa**, ideal para asistentes virtuales, chatbots empresariales y sistemas de soporte a decisiones.
+
+---
+
+### Cómo funciona el flujo RAG
+
+**RAG = Búsqueda semántica + contexto de documentos + LLM → respuestas con trazabilidad**
+
+1. **Consulta del usuario** → se transforma en un vector y se compara con los vectores de documentos indexados.  
+2. **Recuperación semántica** → se seleccionan los fragmentos (“chunks”) más relevantes.  
+3. **Generación con contexto** → el modelo LLM usa esos fragmentos como evidencia para construir la respuesta.  
+4. **Trazabilidad completa** → se guardan los *chunks*, fuentes y prompts utilizados.
+
+---
+
+### Medimos y mejoramos continuamente
+
+Evaluamos nuestros modelos con métricas técnicas y de negocio:
+
+- **Precisión factual** (¿la respuesta es correcta?)  
+- **Cobertura** (¿usa toda la información relevante?)  
+- **Latencia** (tiempo de respuesta)  
+- **Costo por respuesta**
+
+---
+
+### Valor para las organizaciones
+
+Gracias a esta arquitectura, ayudamos a las empresas a:
+
+- Convertir sus documentos en **bases de conocimiento consultables en lenguaje natural**.  
+- Reducir el tiempo de búsqueda y respuesta en **soporte interno o atención ciudadana**.  
+- Garantizar **transparencia y trazabilidad** en las respuestas generadas.  
+- Integrar IA de manera **segura, auditable y alineada con sus sistemas existentes**.
+
+---
+
+> En resumen, nuestras soluciones combinan **comprensión semántica**, **generación natural de texto** y **control empresarial**, para que la IA sea realmente útil, confiable y medible.
+
+---
+
+## Arquitectura RAG (ejemplo)
+![Arquitectura RAG](/img/arquitectura-ia.png)
+
+---

@@ -16,9 +16,10 @@ const sidebars = {
       label: 'Inteligencia Artificial',
       collapsed: false,
       items: [
+        'inteligencia-artificial/marco-teorico',
         'inteligencia-artificial/modelos-generativos',
         'inteligencia-artificial/aprendizaje-de-maquina',
-        'inteligencia-artificial/como-implementar',
+        'inteligencia-artificial/como-llevar-a-la-practica',
       ],
     },
   ],

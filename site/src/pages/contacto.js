@@ -6,7 +6,7 @@ export default function Contacto() {
     <Layout title="Contacto" description="Agendá una llamada o escribime">
       <main className="container margin-vert--lg">
         <h1>Contacto</h1>
-        <p>Agendá una llamada de 20 minutos o escribime directo.</p>
+        <p>Agendá una llamada de 30 minutos o escribime directo.</p>
 
         {/* Calendly embed (reemplaza el href si tenés tu link) */}
         <p>

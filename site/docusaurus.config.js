@@ -12,7 +12,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'DKY Labs',
   tagline: 'DKY Labs | AI & Data',
-  favicon: 'img/logo_small.png',
+  favicon: 'img/logo_d.png',
 
   url: 'http://localhost:3000',   // en dev
   baseUrl: '/',
@@ -40,7 +40,7 @@ const config = {
     navbar: {
       title: 'DKY Labs',
       logo: {
-        src: 'img/logo_small.png',
+        src: 'img/logo_d.png',
       },
       items: [
         { to: '/servicios', label: 'Servicios', position: 'left' },

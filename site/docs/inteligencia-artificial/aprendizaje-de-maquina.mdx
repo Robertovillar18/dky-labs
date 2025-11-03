@@ -1,0 +1,75 @@
+---
+id: aprendizaje-de-maquina
+title: Aprendizaje de máquina
+---
+
+import Link from '@docusaurus/Link';
+
+## Aplicaciones de Machine Learning en soluciones empresariales
+
+Además de los modelos generativos y de búsqueda semántica, en **DKY Labs** aplicamos técnicas clásicas de **Machine Learning (ML)** para resolver problemas concretos en organizaciones públicas y privadas.
+
+El **Aprendizaje Automático** permite **clasificar, predecir y segmentar datos** de forma automatizada, apoyando la toma de decisiones en áreas como atención al cliente, operaciones, planificación o evaluación de políticas.
+
+---
+
+### Clasificación y segmentación de datos
+
+Muchos de los desafíos empresariales pueden resolverse con **modelos de clasificación o de segmentación**:
+
+- **Clasificación supervisada:** cuando existe una variable objetivo conocida (por ejemplo, “satisfacción = alta/baja”).  
+  - Se utilizan modelos como *regresión logística*, *árboles de decisión*, *random forest* o *redes neuronales*.
+  - Ejemplo: clasificar si un trámite fue satisfactorio o no, a partir de los comentarios de usuarios.
+
+- **Clusterización o segmentación (no supervisada):** cuando **no se conoce la categoría previamente**.  
+  - El objetivo es **agrupar patrones o comportamientos similares**, sin etiquetas previas.  
+  - Ejemplo: segmentar tipos de usuarios según sus hábitos o descubrir temáticas recurrentes en encuestas.
+
+En muchos proyectos combinamos ambas estrategias: primero identificamos patrones de manera no supervisada, y luego usamos esos resultados como base para entrenar clasificadores que automatizan la detección de nuevas categorías.
+
+---
+
+### Caso real: clasificación automática de encuestas de satisfacción
+
+Un ejemplo concreto de este enfoque es el proyecto de **clasificación de comentarios de encuestas de satisfacción ciudadana**, desarrollado en colaboración con organismos públicos.
+
+El objetivo fue **identificar temáticas y sentimientos** en miles de respuestas abiertas sobre trámites y servicios.
+
+#### 🔁 Enfoque iterativo y experimental
+
+El proyecto se desarrolló en **ciclos semanales (sprints)**, donde cada iteración incluía:
+1. **Limpieza y preprocesamiento de textos**  
+   (corrección ortográfica, lematización, normalización).
+2. **Generación de embeddings**  
+   usando modelos como *Word2Vec*, *BERT* y finalmente *stsb-xlm-r-multilingual*, que ofreció los mejores resultados semánticos.
+3. **Reducción de dimensionalidad y clusterización**  
+   con *UMAP* + *HDBSCAN*, para detectar temas y eliminar ruido.
+4. **Entrenamiento de modelos de clasificación**  
+   mediante una **red neuronal** en *Keras/TensorFlow*, reforzada con *SMOTE* para equilibrar categorías minoritarias.
+5. **Evaluación y mejora continua**  
+   usando métricas como *Silhouette*, *Accuracy* y *Loss*.
+
+#### 🧠 Resultados
+
+- Se identificaron **más de 20 clusters temáticos**, posteriormente agrupados en 4 categorías principales:
+  1. **Satisfacción y eficiencia**
+  2. **Problemas y dificultades**
+  3. **Sugerencias de mejora**
+  4. **Experiencia del usuario**
+- La red neuronal alcanzó una **precisión del 91.9 %** en la clasificación automática de nuevos comentarios.
+- Los resultados se visualizaron mediante una **interfaz web**, donde los usuarios pueden subir archivos Excel o CSV y obtener la categorización y el sentimiento de cada comentario.
+
+---
+
+### Impacto para las organizaciones
+
+Gracias a este tipo de soluciones, las instituciones pueden:
+
+- **Analizar automáticamente grandes volúmenes de feedback ciudadano.**  
+- **Detectar patrones y áreas de mejora** en tiempo real.  
+- **Reducir el tiempo de análisis manual** de encuestas o comentarios.  
+- **Monitorear la evolución de la satisfacción** con dashboards y KPIs conectados a modelos de IA.
+
+---
+
+> En DKY Labs combinamos **Machine Learning tradicional**, **IA generativa** y **búsqueda semántica**, creando soluciones completas que transforman datos en conocimiento accionable y medible.

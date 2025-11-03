@@ -60,12 +60,12 @@ export default function About() {
         <div className="text--center margin-top--lg">
           <p>📅 ¿Querés conversar con nosotros?</p>
           <a
-            href="https://calendly.com/tu-enlace"
+            href="https://calendly.com/robertovillar18/30min/"
             className="button button--primary button--lg"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Agendá una reunión de 20 minutos
+            Agendá una reunión de 30 minutos
           </a>
         </div>
       </main>

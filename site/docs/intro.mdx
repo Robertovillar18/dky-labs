@@ -15,17 +15,22 @@ import Link from '@docusaurus/Link';
     gap: '16px',
     marginTop: '2rem'
   }}>
+    {/* Gestión de Datos */}
     <div
       style={{
-        backgroundImage: "url('/img/hero-bg.png')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        /* 1) overlay  2) fondo patrón  3) ícono arriba */
+        backgroundImage:
+          "linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)), url('/img/hero-bg.png'), url('/img/icon_gestion_transp.png')",
+        backgroundRepeat: 'no-repeat, no-repeat, no-repeat',
+        backgroundSize: 'cover, cover, 120px',
+        backgroundPosition: 'center, center, top 20px center',
         color: '#fff',
         borderRadius: '12px',
         padding: '2rem',
-        minHeight: '320px',
+        paddingTop: '50px',        // espacio para el ícono
+        minHeight: '360px',         // un poco más alta
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',   // texto arriba
         boxShadow: '0 6px 24px rgba(0,0,0,.10)',
       }}
     >
@@ -39,17 +44,21 @@ import Link from '@docusaurus/Link';
       </div>
     </div>
 
+    {/* Proyectos de IA */}
     <div
       style={{
-        backgroundImage: "url('/img/hero-bg.png')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundImage:
+          "linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)), url('/img/hero-bg.png'), url('/img/icon_ia_transp.png')",
+        backgroundRepeat: 'no-repeat, no-repeat, no-repeat',
+        backgroundSize: 'cover, cover, 120px',
+        backgroundPosition: 'center, center, top 20px center',
         color: '#fff',
         borderRadius: '12px',
         padding: '2rem',
-        minHeight: '320px',
+        paddingTop: '50px',
+        minHeight: '360px',
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         boxShadow: '0 6px 24px rgba(0,0,0,.10)',
       }}
     >

@@ -1,0 +1,111 @@
+---
+id: como-llevar-a-la-practica
+title: Cómo llevar a la práctica
+---
+
+import Link from '@docusaurus/Link';
+
+## Cómo se lleva a la práctica un sistema de IA confiable
+
+Los proyectos de Inteligencia Artificial, especialmente los basados en **RAG (Retrieval-Augmented Generation)**, dependen de una base de información sólida, bien organizada y validada.  
+El **principal punto de falla** en la mayoría de los sistemas RAG no está en el modelo, sino en **la calidad y preparación de los datos** que alimentan al modelo.
+
+---
+
+## 1️⃣ Validación de la información
+
+Un modelo solo puede responder bien si la información que recupera es **correcta, relevante y coherente** con la pregunta.  
+Esto requiere procesos previos de **curación, estandarización y evaluación del contenido** antes de ingresarlo en la base vectorial.
+
+**Problemas comunes en proyectos RAG fallidos:**
+- Ingesta masiva sin control de calidad ni formato.  
+- Datos redundantes o contradictorios.  
+- Falta de trazabilidad sobre la fuente o versión del documento.  
+- Indexación de textos sin estructura ni contexto.  
+
+> Sin validación previa, el modelo termina generando respuestas parciales o incorrectas.
+
+---
+
+## 2️⃣ Preparación y preprocesamiento
+
+Antes de vectorizar, los datos deben ser **depurados, segmentados y enriquecidos**.  
+Este proceso define la precisión y confiabilidad del sistema.
+
+**Etapas clave:**
+1. **Recolección controlada:** fuentes verificadas (documentos oficiales, sistemas internos, repositorios validados).  
+2. **Normalización y limpieza:** eliminación de duplicados, metadatos irrelevantes, corrección de formato y codificación.  
+3. **Segmentación inteligente:** dividir el texto en *chunks* coherentes y semánticamente equilibrados.  
+4. **Enriquecimiento contextual:** agregar etiquetas, dominios, fechas o entidades relevantes que faciliten la búsqueda.  
+5. **Validación automática y manual:** pruebas sobre cobertura, coherencia y actualización de la información.  
+
+> La calidad del preprocesamiento determina directamente la calidad del razonamiento del modelo.
+
+---
+
+## 3️⃣ Anonimización de datos sensibles
+
+En muchos casos, los documentos contienen **datos personales** que deben ser protegidos antes de ser utilizados por el sistema.
+
+Implementamos **sistemas de anonimización específicos para texto libre**, que detectan y reemplazan automáticamente:
+
+- Nombres y apellidos.  
+- Correos electrónicos.  
+- Números de identificación o documentos.  
+- Teléfonos, direcciones, coordenadas u otros identificadores únicos.  
+
+> Esto garantiza el cumplimiento de normativas de privacidad sin comprometer la semántica del texto.
+
+---
+
+## 4️⃣ Construcción de la base vectorial y búsqueda semántica
+
+Una vez procesada y validada la información:
+
+1. **Generación de embeddings** con modelos lingüísticos (ej. *MiniLM, BGE, LaBSE*).  
+2. **Almacenamiento en base vectorial** (ej. *Qdrant, Elasticsearch, Pinecone*).  
+3. Cada *chunk* mantiene su **referencia a la fuente original**, su **timestamp** y metadatos asociados.  
+4. Durante la búsqueda, el sistema recupera los fragmentos más relevantes y **valida su contexto** antes de enviarlos al modelo generativo.  
+
+> Así se logra un RAG confiable, con respuestas explicables y basadas en evidencia.
+
+---
+
+## 5️⃣ Flujo general del sistema RAG
+
+![Arquitectura RAG](/img/arquitectura-ia.png)
+
+**Etapas principales:**
+1. Ingesta y validación de documentos.  
+2. Preprocesamiento y anonimización.  
+3. Generación de embeddings y carga a la base vectorial.  
+4. Recuperación semántica y verificación de contexto.  
+5. Generación con LLM + trazabilidad de fuentes.  
+6. Evaluación y monitoreo continuo.
+
+> Un sistema RAG no es solo un modelo: es un circuito completo de calidad, privacidad y relevancia.
+
+---
+
+## 6️⃣ Operación y mejora continua con MLOps
+
+**Objetivo:** garantizar que los modelos sean **reproducibles**, **desplegables** y **monitorizables**, dentro de un entorno controlado.
+
+![Arquitectura RAG](/img/mlops_diagram.png)
+
+**Componentes del ciclo MLOps:**
+
+- **Control de versiones:** código (Git) y datos/artefactos (DVC o nube).  
+- **Feature Store:** definición centralizada de *features* para entrenamiento y predicción.  
+- **Experimentación y registro:** MLflow (o similar) para *runs*, métricas, parámetros y **Model Registry** (Staging/Prod).  
+- **Pipelines:** orquestación con Prefect o Airflow (ingesta → features → entrenamiento → validación → empaquetado).  
+- **CI/CD de ML:** pruebas de datos y modelo, *linting*, *unit tests*, build Docker y despliegue (API/batch/stream).  
+- **Despliegue:** contenedores (Docker) en tu cloud (Azure, App Service, Kubernetes) o *serverless*.  
+- **Monitoreo:**
+  - **Modelo:** *drift* de datos/predicciones, performance (F1/AUC/RMSE), *feedback loop*.  
+  - **Negocio:** KPIs de impacto (tiempo de respuesta, NPS, tickets resueltos).  
+- **Gobernanza:** linaje de datos/modelo, permisos, auditoría y documentación viva.
+
+> El resultado es un **circuito cerrado de mejora continua**: datos → modelo → negocio → feedback → retraining.
+
+---
